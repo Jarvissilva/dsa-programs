@@ -1,68 +1,45 @@
 #include <stdio.h>
 #include "header.h"
 
-#define size 5
-
-int stack[size];
-int top = -1;
-
-void push()
+int main()
 {
-    if (top < size)
-    {   
-        int val;
-        printf("Enter a number to store in stack: ");
-        scanf("%d",&val);
-        top = top + 1;
-        stack[top] = val;
-        printf("Added to stack\n");
-    }
-    else
-    {
-        printf("Stack is full\n");
-    }
-}
+  int is_quit = 0;
+  while (is_quit == 0)
+  {
+    printf("Welcome to stack what do you want to do: \n");
+    printf("1. Push to stack\n");
+    printf("2. Pop from stack\n");
+    printf("3. Peek stack\n");
+    printf("4. Check if empty\n");
+    printf("5. Check if full\n");
+    printf("6. Quit Program\n");
 
-void pop()
-{
-    if (top == -1)
+    int input;
+    scanf("%d", &input);
+    switch (input)
     {
-        printf("Stack is empty\n");
+    case 1:
+      push();
+      break;
+    case 2:
+      pop();
+      break;
+    case 3:
+      peek();
+      break;
+    case 4:
+      isEmpty();
+      break;
+    case 5:
+      isFull();
+      break;
+    case 6:
+      is_quit = 1;
+      break;
+    default:
+      printf("Please enter a proper value");
+      break;
     }
-    else
-    {
-        printf("Poped %d from to stack\n", stack[top]);
-        stack[top] = 0;
-        top = top - 1;
-    }
-}
-
-void peek()
-{
-    if (top == -1)
-    {
-        printf("Stack is empty\n");
-    }
-    else
-    {
-        printf("Top: %d\n", stack[top]);
-    }
-}
-void isFull(){
-    if(top < size){
-        printf("Stack size is not full\n");       
-    }
-    else{
-        printf("Stack is full\n");
-    }
-}
-
-void isEmpty(){
-    if (top == -1)
-    {
-        printf("Stack is empty\n");
-    }
-    else{
-        printf("Stack is not empty\n");
-    }
+  }
+  return 0;
 }
